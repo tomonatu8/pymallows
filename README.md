@@ -41,23 +41,8 @@ for i, vote in enumerate(votes):
 # Clone the repository
 git clone https://github.com/tomonatu8/pymallows.git
 cd pymallows
-
-# Install development dependencies
-pip install maturin pytest numpy
 ```
 
-### Testing
-
-```bash
-# Run Rust tests
-cargo test
-
-# Build the Python package in development mode
-maturin develop
-
-# Run Python tests
-pytest
-```
 
 ## Contributing
 
