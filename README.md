@@ -42,7 +42,6 @@ for i, vote in enumerate(votes):
 ### Setup Development Environment
 
 ```bash
-# Clone the repository
 git clone https://github.com/tomonatu8/pymallows.git
 cd pymallows
 ```
