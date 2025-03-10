@@ -47,7 +47,7 @@ cd pymallows
 ```
 
 ## References
-- Mallows, C. L. (1957). Non-null ranking models. Biometrika, 44(1-2), 114–130.
+- Mallows, C. L. (1957). Non-null ranking models. *Biometrika*, 44(1-2), 114–130.
 - Mattei N., and Walsh T. PrefLib: A library of preference data. In *Proceedings of the 3rd International Conference on Algorithmic Decision Theory (ADT 2013)*, Lecture Notes in Artificial Intelligence. Springer, 2013.
 
 
