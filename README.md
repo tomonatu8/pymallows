@@ -47,9 +47,9 @@ cd pymallows
 ```
 
 ## References
-- Mattei N., and Walsh T. PrefLib: A library of preference data. In *Proceedings of the 3rd International Conference on Algorithmic Decision Theory (ADT 2013)*, Lecture Notes in Artificial Intelligence. Springer, 2013. [PrefLib Website](http://preflib.org) | [GitHub](https://github.com/PrefLib/preflib) 
+- Mallows, C. L. (1957). Non-null ranking models. Biometrika, 44(1-2), 114–130.
+- Mattei N., and Walsh T. PrefLib: A library of preference data. In *Proceedings of the 3rd International Conference on Algorithmic Decision Theory (ADT 2013)*, Lecture Notes in Artificial Intelligence. Springer, 2013.
 
-- Boehmer N., Faliszewski P., Janeczko Ł., Kaczmarczyk A., Lisowski G., Pierczyński G., Rey S., Stolicki D., Szufa S., and Wąs T. Guide to numerical experiments on elections in computational social choice. arXiv preprint arXiv:2402.11765, 2024. [Github](https://github.com/COMSOC-Community/prefsampling)
 
 ## Contributing
 
