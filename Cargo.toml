@@ -1,0 +1,13 @@
+[package]
+name = "pymallows"
+version = "0.1.0"
+edition = "2024"
+description = "A fast Mallows model implementation for generating rankings"
+repository = "https://github.com/tomonatu8/pymallows"
+license = "MIT"
+keywords = ["voting", "mallows", "ranking", "statistics"]
+
+[dependencies]
+pyo3 = { version = "0.24.0", features = ["extension-module"] }
+rand = "0.9.0"
+rand_chacha = "0.9.0"
