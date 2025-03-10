@@ -1,8 +1,8 @@
 # Rust build artifacts
 /target/
-Cargo.lock
 
-
-
-# Exception: include wheels directory for distribution
+!/target/wheels/
 !/wheels/
+
+# Cargo lock file
+Cargo.lock

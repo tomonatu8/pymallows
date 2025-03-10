@@ -18,11 +18,11 @@ fn mallows_insert_distributions(num_alternatives: usize, phi: f64) -> Vec<Vec<f6
     let mut distributions = Vec::with_capacity(num_alternatives + 1);
     distributions.push(vec![]); 
     for i in 1..=num_alternatives {
-        // Start with an empty distro of length i
+        // Start with an empty distribution of length i
         let mut distribution = vec![0.0; i];
         // compute the denom = phi^0 + phi^1 + ... phi^(i-1)
         let denominator: f64 = (0..i).map(|k| phi.powi(k as i32)).sum();
-        // Fill each element of the distro with phi^(i-j) / denominator
+        // Fill each element of the distribution with phi^(i-j) / denominator
         for j in 1..=i {
             distribution[j - 1] = phi.powi((i - j) as i32) / denominator;
         }
@@ -71,7 +71,7 @@ fn generate_mallows_votes(
     let mut rng = if let Some(s) = seed {
         ChaCha8Rng::seed_from_u64(s)
     } else {
-        ChaCha8Rng::from_entropy()
+        ChaCha8Rng::seed_from_u64(rand::random())
     };
 
     let mut votes = Vec::with_capacity(num_voters);

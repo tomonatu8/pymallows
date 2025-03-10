@@ -1,11 +1,15 @@
 [package]
 name = "pymallows"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
 description = "A fast Mallows model implementation for generating rankings"
 repository = "https://github.com/tomonatu8/pymallows"
 license = "MIT"
 keywords = ["voting", "mallows", "ranking", "statistics"]
+
+[lib]
+name = "mallows"
+crate-type = ["cdylib"]
 
 [dependencies]
 pyo3 = { version = "0.24.0", features = ["extension-module"] }

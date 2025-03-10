@@ -1,1 +1,66 @@
 name: Build macOS Wheels
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  build_wheels:
+    name: Python ${{ matrix.python }} - ${{ matrix.target }}
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        python: ["3.10", "3.11", "3.12"]
+        target: ["x86_64-apple-darwin", "aarch64-apple-darwin"]
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Build wheels
+        uses: PyO3/maturin-action@v1
+        with:
+          target: ${{ matrix.target }}
+          args: --release --strip
+          python-version: ${{ matrix.python }}
+      
+      - name: Create wheels directory
+        run: |
+          mkdir -p wheels/${{ matrix.target }}/py${{ matrix.python }}
+      
+      - name: Move wheels to organized directory
+        run: |
+          cp target/wheels/*.whl wheels/${{ matrix.target }}/py${{ matrix.python }}/
+      
+      - name: Upload wheels
+        uses: actions/upload-artifact@v3
+        with:
+          name: wheels-${{ matrix.target }}-py${{ matrix.python }}
+          path: wheels/${{ matrix.target }}/py${{ matrix.python }}/*.whl
+  
+  commit_wheels:
+    name: Commit wheels to repository
+    needs: build_wheels
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Download all wheels
+        uses: actions/download-artifact@v3
+        with:
+          path: wheels/
+      
+      - name: Reorganize wheel files
+        run: |
+          mkdir -p wheels
+          find wheels -name "*.whl" -exec cp {} /wheels/ \;
+      
+      - name: Commit wheels
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add wheels/
+          git commit -m "Update wheels [skip ci]" || echo "No changes to commit"
+          git push
