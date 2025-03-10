@@ -3,7 +3,7 @@ name: Build macOS Wheels
 on:
   push:
     tags: ['v*']
-  workflow_dispatch:  # Manual trigger
+  workflow_dispatch:
 
 jobs:
   build_wheels:
@@ -15,7 +15,7 @@ jobs:
         target: ["x86_64-apple-darwin", "aarch64-apple-darwin"]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       
       - name: Build wheels
         uses: PyO3/maturin-action@v1
@@ -24,19 +24,11 @@ jobs:
           args: --release --strip
           python-version: ${{ matrix.python }}
       
-      - name: Create wheels directory
-        run: |
-          mkdir -p wheels/${{ matrix.target }}/py${{ matrix.python }}
-      
-      - name: Move wheels to organized directory
-        run: |
-          cp target/wheels/*.whl wheels/${{ matrix.target }}/py${{ matrix.python }}/
-      
       - name: Upload wheels
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: wheels-${{ matrix.target }}-py${{ matrix.python }}
-          path: wheels/${{ matrix.target }}/py${{ matrix.python }}/*.whl
+          path: target/wheels/*.whl
   
   commit_wheels:
     name: Commit wheels to repository
@@ -45,17 +37,20 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       
       - name: Download all wheels
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          path: wheels/
+          path: downloaded-wheels/
       
-      - name: Reorganize wheel files
+      - name: Prepare wheels directory
         run: |
           mkdir -p wheels
-          find wheels -name "*.whl" -exec cp {} /wheels/ \;
+      
+      - name: Copy wheels to final location
+        run: |
+          find downloaded-wheels -name "*.whl" -exec cp {} wheels/ \;
       
       - name: Commit wheels
         run: |
