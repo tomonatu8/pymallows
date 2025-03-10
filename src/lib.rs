@@ -20,7 +20,7 @@ fn mallows_insert_distributions(num_alternatives: usize, phi: f64) -> Vec<Vec<f6
     for i in 1..=num_alternatives {
         // Start with an empty distribution of length i
         let mut distribution = vec![0.0; i];
-        // compute the denom = phi^0 + phi^1 + ... phi^(i-1)
+        // compute the denominator = phi^0 + phi^1 + ... phi^(i-1)
         let denominator: f64 = (0..i).map(|k| phi.powi(k as i32)).sum();
         // Fill each element of the distribution with phi^(i-j) / denominator
         for j in 1..=i {
