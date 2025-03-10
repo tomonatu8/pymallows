@@ -4,7 +4,7 @@ A fast implementation of the Mallows model for generating votes and rankings, wr
 
 ## Installation
 
-### Using pip
+### Using pip / rye
 
 ```bash
 # For Intel Mac + Python 3.10
