@@ -9,9 +9,13 @@ A fast implementation of the Mallows model for generating votes and rankings, wr
 ```bash
 # For Intel Mac + Python 3.10
 pip install https://github.com/tomonatu8/pymallows/raw/main/wheels/pymallows-0.1.0-cp310-cp310-macosx_10_12_x86_64.whl
+# or
+rye add pymallows --url https://github.com/tomonatu8/pymallows/raw/main/wheels/pymallows-0.1.0-cp310-cp310-macosx_10_12_x86_64.whl
 
 # For Apple Silicon (M1/M2/M3) + Python 3.10
 pip install https://github.com/tomonatu8/pymallows/raw/main/wheels/pymallows-0.1.0-cp310-cp310-macosx_11_0_arm64.whl
+# or
+rye add pymallows --url https://github.com/tomonatu8/pymallows/raw/main/wheels/pymallows-0.1.0-cp310-cp310-macosx_11_0_arm64.whl
 ```
 
 ## Usage

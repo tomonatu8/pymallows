@@ -2,7 +2,7 @@ name: Build macOS Wheels
 
 on:
   push:
-    branches: ['main']
+    # branches: ['main']
     tags: ['v*']
   workflow_dispatch: 
 
