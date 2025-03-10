@@ -2,8 +2,9 @@ name: Build macOS Wheels
 
 on:
   push:
+    branches: ['main']
     tags: ['v*']
-  workflow_dispatch:
+  workflow_dispatch: 
 
 jobs:
   build_wheels:
@@ -16,6 +17,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python }}
       
       - name: Build wheels
         uses: PyO3/maturin-action@v1
