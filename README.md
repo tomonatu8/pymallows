@@ -37,6 +37,17 @@ for i, vote in enumerate(votes):
     print(f"Voter {i+1}: {vote}")
 ```
 
+## Mallows Model
+In the Mallows model, the probability of generating a ranking $\pi$ given a reference ranking $\tau$ and a dispersion parameter $\phi \in (0,1]$ is given by
+
+$$
+    \Pr[\pi \mid \tau, \phi] = \frac{\phi^{d(\pi,\tau)}}{Z(\phi)},
+$$
+
+where $d(\pi,\tau)$ is the Kendall tau distance between $\pi$ and $\tau$, and $Z(\phi)$ is a normalization constant.
+
+As $\phi$ approaches $0$, all probability mass concentrates on the reference ranking $\tau$. As $\phi$ approaches $1$, the distribution becomes uniform over all rankings.
+
 ## Development
 
 ### Setup Development Environment
